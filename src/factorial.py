@@ -8,10 +8,21 @@ def factorial(n):
     return resultado
 
 
-# 🔥 Acá está la modificación
+# 🔥 Entrada (argumento o teclado)
 if len(sys.argv) > 1:
-    num = int(sys.argv[1])
+    entrada = sys.argv[1]
 else:
-    num = int(input("Ingrese un número: "))
+    entrada = input("Ingrese un número o rango (ej: 4-8): ")
 
-print(f"{num}! = {factorial(num)}")
+
+# 🔥 Procesar entrada
+if "-" in entrada:
+    partes = entrada.split("-")
+    inicio = int(partes[0])
+    fin = int(partes[1])
+
+    for i in range(inicio, fin + 1):
+        print(f"{i}! = {factorial(i)}")
+else:
+    num = int(entrada)
+    print(f"{num}! = {factorial(num)}")
